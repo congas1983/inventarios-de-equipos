@@ -55,7 +55,7 @@
 						
                             	<button type="submit" class="btn btn-primary">Ingresar</button>
 
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Perdi&oacute; su contrase&atilde;a?</a>
+								<a class="btn btn-link" href="{{ url('/password/email') }}">&iquest;Perdi&oacute; su contrase&ntilde;a?</a>
 							</div>
 						</div>
 					{!!Form::close()!!}

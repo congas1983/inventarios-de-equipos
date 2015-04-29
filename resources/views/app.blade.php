@@ -31,20 +31,32 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				
 			</div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Inicio</a></li>
+			<div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			
+                	
+                
+                   	<ul class="nav navbar-nav">
+             
+					<li><a class="navbar-brand"  href="{{ url('/') }}">Inicio</a></li>
 				</ul>
+                	 
+
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Iniciar sesi&oacute;n</a></li>
-						<li><a href="{{ url('/auth/register') }}">Registrar</a></li>
+						<li><a class="navbar-brand" href="{{ url('/auth/login') }}">Iniciar sesi&oacute;n</a></li>
+						<li><a class="navbar-brand" href="{{ url('/auth/register') }}">Registrar</a></li>
 					@else
+                    	<li><a href="{{ url('/') }}" class="navbar-brand">Asignaciones</a></li>
+                    	<li><a href="{{ url('/') }}" class="navbar-brand">Compras</a></li>
+                    	<li><a href="{{ url('/') }}" class="navbar-brand">Reportes</a></li>
+                    	<li><a href="{{ url('/') }}" class="navbar-brand">Maestros</a></li>
+                  <li></li>
 						<li class="dropdown">
+                        
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Cerrar sesi&oacute;n </a></li>
