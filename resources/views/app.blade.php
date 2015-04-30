@@ -67,17 +67,16 @@
 			</div>
 		</div>
 	</nav>
-
+<div class="container">
 	@yield('content')
+</div>    
+    
     {!!Html::script('bower_components/jquery/dist/jquery.min.js')!!}
     {!!Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js')!!}
         {!!Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
         {!!Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
         
         
-<script type="text/javascript">
-$(document).on('ready',function(){
-$material.init();});</script>
 
 </body>
 </html>
