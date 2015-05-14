@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'es',
+	'locale' => 'es-ES',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -140,15 +140,16 @@ return [
          *Vendor Service Providers
          */
          'Collective\Html\HtmlServiceProvider', 
-        
+    	 'Barryvdh\DomPDF\ServiceProvider',
         /*
 		 * Application Service Providers...
 		 */
-		'Laravel\Providers\AppServiceProvider',
-		'Laravel\Providers\BusServiceProvider',
-		'Laravel\Providers\ConfigServiceProvider',
-		'Laravel\Providers\EventServiceProvider',
-		'Laravel\Providers\RouteServiceProvider',
+		'App\Providers\AppServiceProvider',
+		'App\Providers\BusServiceProvider',
+		'App\Providers\ConfigServiceProvider',
+		'App\Providers\EventServiceProvider',
+		'App\Providers\RouteServiceProvider',
+		
 
 	],
 

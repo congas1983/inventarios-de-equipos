@@ -1,4 +1,4 @@
-<?php namespace Laravel\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -21,6 +21,7 @@ class Authenticate {
 	public function __construct(Guard $auth)
 	{
 		$this->auth = $auth;
+        
 	}
 
 	/**

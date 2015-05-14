@@ -8,7 +8,6 @@
     {!!Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
 {!!Html::style('bower_components/bootstrap-material-design/dist/css/material.min.css')!!}
 {!!Html::style('bower_components/bootstrap-material-design/dist/css/ripples.min.css')!!}
-{!!Html::style('bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css')!!}
 
 
 	<!-- Fonts -->
@@ -35,31 +34,51 @@
 			</div>
 
 			<div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			
+		
                 	
                 
                    	<ul class="nav navbar-nav">
-             
-					<li><a class="navbar-brand"  href="{{ url('/') }}">Inicio</a></li>
+            
+					<li><a class="navbar-brand"  href="{{ url('/') }}">SISTEMA DE INVENTARIOS</a></li>
 				</ul>
                 	 
 
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a class="navbar-brand" href="{{ url('/auth/login') }}">Iniciar sesi&oacute;n</a></li>
-						<li><a class="navbar-brand" href="{{ url('/auth/register') }}">Registrar</a></li>
+						<li><a  href="{{ url('/auth/login') }}"><span class="glyphicon glyphicon-log-in" > </span> Iniciar</a></li>
+						<li><a href="{{ url('/auth/register') }}"><span class="glyphicon glyphicon-collapse-up" ></span> Registrar</a></li>
 					@else
-                    	<li><a href="{{ url('/') }}" class="navbar-brand">Asignaciones</a></li>
-                    	<li><a href="{{ url('/') }}" class="navbar-brand">Compras</a></li>
-                    	<li><a href="{{ url('/') }}" class="navbar-brand">Reportes</a></li>
-                    	<li><a href="{{ url('/') }}" class="navbar-brand">Maestros</a></li>
+                       
+                 
+                    	<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th-list" > </span> Reportes</a>
+                            <ul class="dropdown-menu" role="menu">
+							
+							</ul>
+                         </li>
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog"> </span> Maestros</a>
+                            <ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('areas/') }}"><span class="glyphicon glyphicon-minus" ></span> &Aacute;reas</a></li>
+                                <li><a href="{{ url('ccostos/') }}"><span class="glyphicon glyphicon-minus" ></span> Centro costos</a></li>
+                                <li><a href="{{ url('empleados/') }}"><span class="glyphicon glyphicon-minus" ></span> Empleados</a></li>
+                                <li><a href="{{ url('terceros/') }}"><span class="glyphicon glyphicon-minus" ></span> Equipamientos</a></li>
+                                 <li><a href="{{ url('terceros/') }}"><span class="glyphicon glyphicon-minus" ></span> Equipos</a></li>
+                                <li><a href="{{ url('terceros/') }}"><span class="glyphicon glyphicon-minus" ></span> Proveedores</a></li>
+                                 <li><a href="{{ url('terceros/') }}"><span class="glyphicon glyphicon-minus" ></span> Referencias equipos</a></li>
+                                <li><a href="{{ url('terceros/') }}"><span class="glyphicon glyphicon-minus" ></span> Servicios</a></li>
+                                <li><a href="{{ url('terceros/') }}"><span class="glyphicon glyphicon-minus" ></span> Suministros</a></li>
+
+                                
+							</ul>
+                         </li>
                   <li></li>
 						<li class="dropdown">
                         
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" > </span> {{   Auth::user()->name }} <b class="caret"></b></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Cerrar sesi&oacute;n </a></li>
+								<li><a href="{{ url('/auth/logout') }}"><span class="glyphicon glyphicon-off" ></span> Cerrar sesi&oacute;n </a></li>
 							</ul>
 						</li>
 					@endif
@@ -68,15 +87,40 @@
 		</div>
 	</nav>
 <div class="container">
-	@yield('content')
-</div>    
-    
-    {!!Html::script('bower_components/jquery/dist/jquery.min.js')!!}
-    {!!Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js')!!}
-        {!!Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
-        {!!Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
-        
-        
 
+
+
+	@yield('content')
+    	
+</div>  
+
+
+    {!!Html::script('bower_components/jquery/dist/jquery.min.js')!!}
+ 
+	{!!Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js')!!}
+    {!!Html::script('bower_components/bootstrap-material-design/dist/js/ripples.min.js')!!}
+    {!!Html::script('bower_components/bootstrap-material-design/dist/js/material.min.js')!!}
+    
+<footer class="main">	<div  class="form-group col-xs-12"  id="bs-example-navbar-collapse-1"  style="background-color: #f0ad4e;">
+	</center></div>	<div class="form-group col-xs-12" id="bs-example-navbar-collapse-1" ><ul class="text-center">
+		<p>Laravel is a trademark of Taylor Otwell. Copyright &copy; Andr&eacute;s Alvarez.</p>
+		<p class="less-significant"><a href="http://jackmcdade.com">Desarrollo de Andr&eacute;s Alvarez. Analistista y Consultor en sistmes informaticos.</a></p></ul>
+	</footer>
+</div>
+</footer>
+<script>
+	$(document).ready(function(){
+		$('#departamento').change(function(){
+			$.get("{{ url('dropdown')}}",
+			{ option: $(this).val() },
+			function(data) {
+				$('#ciudad').empty();
+				$.each(data, function(key, element) {
+					$('#ciudad').append("<option value='" + element + "'>" + element + "</option>");
+				});
+			});
+		});
+	});		
+</script>
 </body>
 </html>
